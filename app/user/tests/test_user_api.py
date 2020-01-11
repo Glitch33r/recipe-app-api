@@ -66,10 +66,7 @@ class PublicUserApiTest(TestCase):
             'name': 'Test'
         }
         create_user(**payload)
-        user_exists = get_user_model().objects.filter(
-            email=payload['email']
-        ).exists()
-        print(user_exists)
+
         res = self.client.post(TOKEN_URL, payload)
         self.assertIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
