@@ -10,7 +10,7 @@ TAGS_URL = reverse('recipe:tag-list')
 
 
 class PublicTagsApiTests(TestCase):
-    """test the  publicly  available tags API """
+    """Test the  publicly  available tags API """
 
     def setUp(self) -> None:
         self.client = APIClient()
@@ -23,7 +23,7 @@ class PublicTagsApiTests(TestCase):
 
 
 class PrivateTagsApiTests(TestCase):
-    """test authorized tags API"""
+    """Test authorized tags API"""
 
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
@@ -34,7 +34,7 @@ class PrivateTagsApiTests(TestCase):
         self.client.force_authenticate(self.user)
 
     def test_retrieve_tags(self):
-        """test retrieving tags"""
+        """Test retrieving tags"""
 
         Tag.objects.create(user=self.user, name='Vegan')
         Tag.objects.create(user=self.user, name='Dessert')
